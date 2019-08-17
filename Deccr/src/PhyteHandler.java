@@ -24,7 +24,7 @@ public class PhyteHandler {
 	}
 	
 	public String testPhyteHandler() {
-				
+		return "";
 	}
 	
 }
