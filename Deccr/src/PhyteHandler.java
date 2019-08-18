@@ -10,7 +10,7 @@ public class PhyteHandler {
 		
 	}
 	
-	public String toStringArray() {
+	public String toString() {
 		String ret = "";
 		for (int i=0; i < PhyteList.size(); i++) {
 			
@@ -23,9 +23,6 @@ public class PhyteHandler {
 		
 	}
 	
-	public String testPhyteHandler() {
-		return "";
-	}
 	
 }
 
