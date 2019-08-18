@@ -10,6 +10,13 @@ public class PhyteHandler {
 		
 	}
 	
+	public PhyteHandler(ArrayList<String> phonemes) {
+		PhyteList = new ArrayList<Phyte>();
+		for (int i = 0; i < phonemes.size(); i++) {
+			PhyteList.add(new Phyte(phonemes.get(i)));
+		}
+	}
+	
 	public String toString() {
 		String ret = "";
 		for (int i=0; i < PhyteList.size(); i++) {
@@ -36,6 +43,12 @@ class Phyte {
 		phoneme = "aa";
 		duration = 1000;
 		pitch = 15;
+	}
+	
+	public Phyte(String pho) {
+		phoneme = pho;
+		duration = 1000;
+		pitch = 10;
 	}
 	
 	public Phyte(String pho, int dur, int pit) {
