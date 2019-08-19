@@ -13,7 +13,8 @@ public class PhyteHandler {
 	
 	public PhyteHandler(ArrayList<String> phonemes) {
 		PhyteList = new ArrayList<Phyte>();
-		PhyteList.add(0, new Phyte(-1));
+		PhyteList.add(new Phyte(-10));//enables [:phoneme on]
+		PhyteList.add(new Phyte(-1));//sets default voice
 		for (int i = 0; i < phonemes.size(); i++) {
 			PhyteList.add(new Phyte(phonemes.get(i)));
 		}
@@ -78,7 +79,8 @@ class Phyte {
 	
 	/**
 	 * Constructor for voice change phoneme
-	 * @param voice desired DECTalk voice, range [-1,-9]
+	 * Also handles initializing phoneme mode in dectalk with voice = -10
+	 * @param voice desired DECTalk voice, range [-1,-9], use -10 to create [:phoneme on]
 	 */
 	public Phyte(int voice) {
 		phoneme = "";
@@ -120,6 +122,8 @@ class Phyte {
 		case -9:
 			voice = "k";
 			break;
+		case -10:
+			return "[:phoneme on]";
 		}
 		return "[:n" + voice + "]";
 		
