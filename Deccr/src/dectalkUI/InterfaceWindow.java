@@ -1,6 +1,8 @@
 package dectalkUI;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+
 import javax.swing.*;
 
 public class InterfaceWindow extends JFrame {
@@ -96,7 +98,17 @@ public class InterfaceWindow extends JFrame {
 	
 	public void displayGif() {
 		
-		ImageIcon babyIcon = new ImageIcon("/src/resources/baby.gif");
+		File helper = new File("temp.txt");
+		String tempPath = helper.getAbsolutePath();
+		helper.delete();
+		for (int i = 0; i < tempPath.length()-5; i++) {
+			if (tempPath.substring(i,i+8).equals("temp.txt")) {
+				tempPath = tempPath.substring(0,i);
+				break;
+			}
+		}
+		System.out.println(tempPath + "src\\Desktop\\baby.gif");
+		ImageIcon babyIcon = new ImageIcon(tempPath + "src\\Desktop\\baby.gif");
 		JLabel babyLabel = new JLabel(babyIcon);
 		
 		add(babyLabel);
