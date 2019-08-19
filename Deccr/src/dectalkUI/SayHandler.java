@@ -1,3 +1,4 @@
+package dectalkUI;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,12 +13,13 @@ public class SayHandler {
 		String tempPath = helper.getAbsolutePath();
 		helper.delete();
 		for (int i = 0; i < tempPath.length()-5; i++) {
-			if (tempPath.substring(i,i+5).equals("Deccr")) {
-				tempPath = tempPath.substring(0,i+5);
+			if (tempPath.substring(i,i+8).equals("temp.txt")) {
+				tempPath = tempPath.substring(0,i);
 				break;
 			}
 		}
-		phoLog = new File(tempPath + "\\say\\phoneme_log.txt");
+		phoLog = new File(tempPath + "\\src\\Us\\phoneme_log.txt");
+		//System.out.println(phoLog.getAbsolutePath());
 		
 	}
 	
@@ -27,7 +29,8 @@ public class SayHandler {
 	
 	public ArrayList<String> readPhonemes() throws IOException {
 
-		while (!(new File(phoLog.getParent() + "\\temp").exists())) {}
+		int e = 0;
+		while (!(new File(phoLog.getParent() + "\\temp").exists())) {/*e++; System.out.println(e);*/}
 		Scanner sc = new Scanner(phoLog);
 		
 		ArrayList<String> ret = new ArrayList<String>();
@@ -53,6 +56,7 @@ public class SayHandler {
 				}
 			}
 		}
+		//System.out.println(phoLog.getParent());
 		Runtime.getRuntime().exec("cmd start /c rmdir \"" + phoLog.getParent() + "\\temp\" && exit");
 		return ret;
 	}
