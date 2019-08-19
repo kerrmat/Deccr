@@ -23,16 +23,11 @@ public class SayHandler {
 	
 	public void writePhoneme(String usrText) throws IOException {
 		Runtime.getRuntime().exec("cmd /c say.exe -lp \"" + phoLog.getAbsolutePath() + "\" " + usrText + " && mkdir \"" + phoLog.getParent() + "\\temp\"");
-		//System.out.println("\"" + phoLog.getParent() + "\\temp\"");
 	}
 	
 	public ArrayList<String> readPhonemes() throws IOException {
-		//int e = 0;
-		//System.out.println("\"" + phoLog.getParent() + "\\temp\"");
-		while (!(new File(phoLog.getParent() + "\\temp").exists())) {
-			//System.out.println(e);
-			
-		}
+
+		while (!(new File(phoLog.getParent() + "\\temp").exists())) {}
 		Scanner sc = new Scanner(phoLog);
 		
 		ArrayList<String> ret = new ArrayList<String>();
