@@ -29,7 +29,7 @@ public class SayHandler {
 	
 	public ArrayList<String> readPhonemes() throws IOException {
 
-		int e = 0;
+		//int e = 0;
 		while (!(new File(phoLog.getParent() + "\\temp").exists())) {/*e++; System.out.println(e);*/}
 		Scanner sc = new Scanner(phoLog);
 		
