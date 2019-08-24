@@ -2,11 +2,17 @@ package dectalkUI;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class InterfaceWindow extends JFrame {
 	
-	JButton[] buttonarray = new JButton[5];
+	ArrayList<JButton> phyteButton = new ArrayList<JButton>();
+	SayHandler sh = new SayHandler();
+	ArrayList<PhyteHandler> ph = new ArrayList<PhyteHandler>();
+	JTextField inputField;
 	JMenuBar mainMenuBar = new JMenuBar();
 	JPanel p;
 	
@@ -22,12 +28,25 @@ public class InterfaceWindow extends JFrame {
 		
 		p = new JPanel(new GridBagLayout());
 		
-		JTextField inputField = new JTextField(20);
-		JTextField inputField2 = new JTextField(20);
-		JTextField inputField3 = new JTextField(20);
+		inputField = new JTextField(20);
+
+		//JTextField inputField2 = new JTextField(20);
+		//JTextField inputField3 = new JTextField(20);
 		
 		JTextArea textArea = new JTextArea(20,20);
 		textArea.setEditable(false);
+		
+		JButton testButton = new JButton();
+		testButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					makePhyteButtons(inputField.getText());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		p.setPreferredSize(new Dimension(640, 480));
 		
@@ -40,10 +59,11 @@ public class InterfaceWindow extends JFrame {
 		c.gridy = 0;
 		c.weightx = 0.5;
 		p.add(inputField, c);
-		c.gridx = 1;
-		p.add(inputField2, c);
+		c.gridy = 1;
+		p.add(testButton, c);
+		//p.add(inputField2, c);
 		c.gridx = 2;
-		p.add(inputField3, c);
+		//p.add(inputField3, c);
 		//p.add(textArea, c);
 		
 		
@@ -101,6 +121,17 @@ public class InterfaceWindow extends JFrame {
 		JLabel babyLabel = new JLabel(babyIcon);
 		
 		add(babyLabel);
+		
+	}
+	
+	public void makePhyteButtons(String input) throws IOException {
+		
+		sh.writePhoneme(input);
+		ph.add(new PhyteHandler(sh.readPhonemes()));
+		for (int i = 0; i < ph.size(); i++) {
+			System.out.println(ph.get(i).toString());
+		}
+		
 		
 	}
 }

@@ -1,8 +1,12 @@
 package dectalkUI;
 import java.util.*;
 
-public class PhyteHandler {
+import javax.swing.JButton;
+
+public class PhyteHandler  {
 	
+	final int PHO_ON = -10;
+	final int DEFAULT_VOICE = -1;
 	public ArrayList<Phyte> PhyteList;
 	
 	public PhyteHandler() {
@@ -13,8 +17,8 @@ public class PhyteHandler {
 	
 	public PhyteHandler(ArrayList<String> phonemes) {
 		PhyteList = new ArrayList<Phyte>();
-		PhyteList.add(new Phyte(-10));//enables [:phoneme on]
-		PhyteList.add(new Phyte(-1));//sets default voice
+		PhyteList.add(new Phyte(PHO_ON));//enables [:phoneme on]
+		PhyteList.add(new Phyte(DEFAULT_VOICE));//sets default voice
 		for (int i = 0; i < phonemes.size(); i++) {
 			PhyteList.add(new Phyte(phonemes.get(i)));
 		}
