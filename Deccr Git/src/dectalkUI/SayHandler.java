@@ -19,12 +19,16 @@ public class SayHandler {
 			}
 		}
 		phoLog = new File(tempPath + "\\src\\Us\\phoneme_log.txt");
-		//System.out.println(phoLog.getAbsolutePath());
+		System.out.println(phoLog.getAbsolutePath());
 		
 	}
 	
 	public void writePhoneme(String usrText) throws IOException {
-		Runtime.getRuntime().exec("cmd /c say.exe -lp \"" + phoLog.getAbsolutePath() + "\" " + usrText + " && mkdir \"" + phoLog.getParent() + "\\temp\"");
+		//Runtime.getRuntime().exec("cmd /c start dir");
+		String s = "cmd /c cd \"" + phoLog.getParent() + "\" && say.exe -lp \"" + phoLog.getAbsolutePath() + "\" " + usrText + " && mkdir \"" + phoLog.getParent() + "\\temp\"";
+		
+		System.out.println(s);
+		Runtime.getRuntime().exec(s);
 	}
 	
 	public ArrayList<String> readPhonemes() throws IOException {
