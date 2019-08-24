@@ -59,6 +59,7 @@ public class InterfaceWindow extends JFrame {
 		c.gridy = 0;
 		c.weightx = 0.5;
 		p.add(inputField, c);
+		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridy = 1;
 		p.add(testButton, c);
 		//p.add(inputField2, c);
@@ -134,4 +135,21 @@ public class InterfaceWindow extends JFrame {
 		
 		
 	}
+}
+
+class mainPanel extends JPanel{
+	
+	
+	
+	public mainPanel() {
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }
