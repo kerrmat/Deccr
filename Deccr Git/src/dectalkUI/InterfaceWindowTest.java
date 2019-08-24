@@ -134,7 +134,7 @@ public class InterfaceWindowTest extends JFrame {
 		
 		String babyPath = (new File("temp.txt")).getAbsolutePath();
 		babyPath = babyPath.substring(0,babyPath.length()-8) + "src\\dectalkUI\\Desktop\\baby.gif";
-		System.out.println(babyPath);
+		//System.out.println(babyPath);
 		//myImage = myImage.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
 	    ImageIcon myImageIcon = new ImageIcon(babyPath);
 				
