@@ -9,6 +9,7 @@ import javax.swing.*;
 
 public class InterfaceWindow extends JFrame {
 	
+	
 	ArrayList<JButton> phyteButton = new ArrayList<JButton>();
 	SayHandler sh = new SayHandler();
 	ArrayList<PhyteHandler> ph = new ArrayList<PhyteHandler>();

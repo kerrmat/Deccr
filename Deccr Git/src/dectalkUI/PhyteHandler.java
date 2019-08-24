@@ -1,9 +1,9 @@
 package dectalkUI;
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
 
-import javax.swing.JButton;
-
-public class PhyteHandler  {
+public class PhyteHandler {
 	
 	final int PHO_ON = -10;
 	final int DEFAULT_VOICE = -1;
@@ -11,7 +11,9 @@ public class PhyteHandler  {
 	
 	public PhyteHandler() {
 		
-		 PhyteList = new ArrayList<Phyte>();
+		PhyteList = new ArrayList<Phyte>();
+		PhyteList.add(new Phyte(PHO_ON));//enables [:phoneme on]
+		PhyteList.add(new Phyte(DEFAULT_VOICE));//sets default voice
 		 
 	}
 	
@@ -24,6 +26,12 @@ public class PhyteHandler  {
 		}
 	}
 	
+	public void addPhytes(ArrayList<String> phonemes) {
+		for (int i = 0; i < phonemes.size(); i++) {
+			PhyteList.add(new Phyte(phonemes.get(i)));
+		}
+	}
+	
 	public void changeVoice(int index, int voice) {
 		PhyteList.add(index, new Phyte(voice));
 	}
@@ -31,16 +39,10 @@ public class PhyteHandler  {
 	public String toString() {
 		String ret = "";
 		for (int i=0; i < PhyteList.size(); i++) {
-			
 			ret += PhyteList.get(i).toString();
-			
 		}
-		
 		return ret;
-		
-		
 	}
-	
 	
 }
 
@@ -57,6 +59,7 @@ class Phyte extends JButton {
 		phoneme = "aa";
 		duration = 1000;
 		pitch = 15;
+		setupJButton();
 	}
 	
 	/**
@@ -67,6 +70,7 @@ class Phyte extends JButton {
 		phoneme = pho;
 		duration = 1000;
 		pitch = 10;
+		setupJButton();
 	}
 	
 	/**
@@ -79,6 +83,7 @@ class Phyte extends JButton {
 		phoneme = pho;
 		duration = dur;
 		pitch = pit;
+		setupJButton();
 	}
 	
 	/**
@@ -90,6 +95,11 @@ class Phyte extends JButton {
 		phoneme = "";
 		duration = voice;
 		pitch = 0;
+	}
+	
+	public void setupJButton() {
+		setText(phoneme);
+		setPreferredSize(new Dimension(duration/10,pitch*3));
 	}
 	
 	public String toString() {

@@ -15,9 +15,9 @@ public class Driver {
 
 class DectalkUI{
 	
-	InterfaceWindow iw;		
+	InterfaceWindowTest iw;		
 	public DectalkUI(){
-		iw = new InterfaceWindow();
+		iw = new InterfaceWindowTest();
 	}
 	
 }
