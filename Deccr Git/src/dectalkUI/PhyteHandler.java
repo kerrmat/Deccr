@@ -44,7 +44,7 @@ public class PhyteHandler  {
 	
 }
 
-class Phyte {
+class Phyte extends JButton {
 	
 	public String phoneme;
 	public int duration;
